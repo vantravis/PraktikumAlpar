@@ -5,14 +5,14 @@
 
 int main(int argc,char** argv){
 
-	int rank, banyak_proceessor, hitung_recv;
+	int rank, banyak_processor, hitung_recv;
 	MPI_Request minta;
 	MPI_Status status;
 	double sBuf[100], rBuf[100];
 
 	MPI_Init(&argc, &argv);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-	MPI_Comm_size(MPI_COMM_WORLD, &banyak_proceessor);
+	MPI_Comm_size(MPI_COMM_WORLD, &banyak_processor);
 
 	if (rank == 0) {
 
