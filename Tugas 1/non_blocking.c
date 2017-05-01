@@ -21,7 +21,7 @@ int main(int argc,char** argv){
 		MPI_Wait(&minta, &status);
 
 	}
-	else {
+	else if(rank==1){
 		
 		MPI_Isend(sBuf, 100, MPI_DOUBLE, 0, 10, MPI_COMM_WORLD, &minta);
 		MPI_Recv(rBuf, 100, MPI_DOUBLE, 0, 22, MPI_COMM_WORLD, &status);
@@ -30,7 +30,7 @@ int main(int argc,char** argv){
 	}
 
 	MPI_Get_count(&status, MPI_DOUBLE, &hitung_recv);
-	printf(" Processor: %d | Sumber: %d | Tag: %d | Total: %d\n ", rank, status.MPI_SOURCE, status.MPI_TAG, hitung_recv);	
-	return 0;
+	printf(" Processor: %d | Sumber: %d | Tag: %d | Total Terima: %d\n ", rank, status.MPI_SOURCE, status.MPI_TAG, hitung_recv);	
+	MPI_Finalize();
 }
 
